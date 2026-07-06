@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Đoàn Vương Khang (2009) 🎂</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Trang web chúc mừng sinh nhật tuổi 17 siêu độc lạ và mận keo dành riêng cho Đoàn Vương Khang (2009).">
+    <meta name="keywords" content="Đoàn Vương Khang, Sinh nhật Đoàn Vương Khang, Happy Birthday 2009">
+    <meta name="author" content="Antigravity">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas for Fireworks -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <!-- Welcome Gate (Màn hình mở đầu để kích hoạt autoplay nhạc) -->
+    <div id="welcome-gate" class="gate-container">
+        <div class="gate-card glassmorphic animate-fade-in">
+            <div class="gate-avatar">
+                <span class="emoji-avatar">👑</span>
+            </div>
+            <h1 class="glow-text font-pacifico">Khang's 17th Birthday</h1>
+            <p class="gate-subtitle">Một hộp quà đặc biệt đã được gửi đến từ tương lai...</p>
+            <div class="gate-slang">"2009 chính thức bước sang tuổi mới siêu đỉnh chóp!"</div>
+            <button id="open-btn" class="neon-btn pulse-anim">
+                <i class="fa-solid fa-gift"></i> MỞ HỘP QUÀ NGAY 💖
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Card Container (Ẩn lúc đầu) -->
+    <div id="main-content" class="main-container hidden">
+        
+        <!-- Header -->
+        <header class="header animate-slide-down">
+            <div class="glow-pill font-outfit">✨ ĐOÀN VƯƠNG KHANG - TUỔI 17 MÃI MẬN ✨</div>
+            <h1 class="main-title font-pacifico text-gradient">Happy Birthday!</h1>
+            <p class="subtitle">Chúc mừng chàng trai sinh năm 2009 🎉</p>
+        </header>
+
+        <!-- Main Layout: Grid 2 Columns -->
+        <div class="card-grid">
+            
+            <!-- Left Panel: Virtual Cake & Blow Candles -->
+            <div class="card-panel glassmorphic animate-slide-left" id="cake-panel">
+                <h2 class="panel-title font-outfit"><i class="fa-solid fa-cake-candles"></i> Thổi Nến Ước Nguyện</h2>
+                <p class="panel-desc">Click vào từng ngọn nến để thổi tắt nến và ước nguyện nhé Khang ơi!</p>
+                
+                <div class="cake-container">
+                    <div class="cake">
+                        <!-- Candles Grid -->
+                        <div class="candles-wrapper">
+                            <div class="candle" id="candle-1">
+                                <div class="flame"></div>
+                                <div class="candle-body"></div>
+                            </div>
+                            <div class="candle" id="candle-2">
+                                <div class="flame"></div>
+                                <div class="candle-body"></div>
+                            </div>
+                            <div class="candle" id="candle-3">
+                                <div class="flame"></div>
+                                <div class="candle-body"></div>
+                            </div>
+                        </div>
+                        <div class="cake-layer cake-top"></div>
+                        <div class="cake-layer cake-middle"></div>
+                        <div class="cake-layer cake-bottom"></div>
+                        <div class="cake-plate"></div>
+                    </div>
+                </div>
+
+                <div class="cake-action-text" id="cake-status">
+                    Nến vẫn đang cháy, ước đi nào! 🎂
+                </div>
+            </div>
+
+            <!-- Right Panel: Wishes & Slangs -->
+            <div class="card-panel glassmorphic animate-slide-right" id="wishes-panel">
+                <h2 class="panel-title font-outfit"><i class="fa-solid fa-wand-magic-sparkles"></i> Lời Chúc Mặn Keo</h2>
+                
+                <!-- Wishes Carousel -->
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Wish Slide 1 -->
+                        <div class="carousel-slide active">
+                            <div class="wish-card">
+                                <span class="wish-emoji">💅</span>
+                                <p class="wish-text">"Chúc Đoàn Vương Khang tuổi 17 mãi mận mãi keo, visual cực đỉnh, không có đối thủ! Bớt suy nghĩ lo âu và flex cực mạnh nhé!"</p>
+                                <span class="wish-author">— Hội những người hâm mộ Khang</span>
+                            </div>
+                        </div>
+                        <!-- Wish Slide 2 -->
+                        <div class="carousel-slide">
+                            <div class="wish-card">
+                                <span class="wish-emoji">🎓</span>
+                                <p class="wish-text">"Chúc cậu tuổi mới học hành bá cháy, thi cử bao đỗ, điểm số cao vút như diều gặp gió. Cột sống dẻo dai không lo đau mỏi nha!"</p>
+                                <span class="wish-author">— Đồng bọn chí cốt</span>
+                            </div>
+                        </div>
+                        <!-- Wish Slide 3 -->
+                        <div class="carousel-slide">
+                            <div class="wish-card">
+                                <span class="wish-emoji">💵</span>
+                                <p class="wish-text">"Sinh năm 2009 mà nay đã cao lớn, đẹp trai lắm rồi nha. Chúc Khang ví tiền lúc nào cũng dày, tình bạn keo sơn, vạn sự hanh thông!"</p>
+                                <span class="wish-author">— Gia đình thân yêu</span>
+                            </div>
+                        </div>
+                        <!-- Wish Slide 4 -->
+                        <div class="carousel-slide">
+                            <div class="wish-card">
+                                <span class="wish-emoji">🔥</span>
+                                <p class="wish-text">"Háp pi bớt đay! Tuổi 17 thật bùng nổ, gặt hái thật nhiều thành công và luôn là phiên bản tự tin nhất của chính mình nhé chàng trai!"</p>
+                                <span class="wish-author">— Fan Club 2009</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Controls -->
+                    <div class="carousel-nav">
+                        <button class="nav-btn prev-btn" id="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="nav-btn next-btn" id="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Music Controller Widget (Cassette / Vinyl Vibe) -->
+        <div class="music-widget glassmorphic animate-fade-in">
+            <div class="vinyl-disc" id="vinyl-disc">
+                <div class="vinyl-center"></div>
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=100&h=100" alt="Music Cover" class="vinyl-cover">
+            </div>
+            <div class="music-info">
+                <div class="track-title font-outfit">Khúc Hát Mừng Sinh Nhật</div>
+                <div class="track-artist">Phan Đinh Tùng</div>
+            </div>
+            <button id="play-pause-btn" class="music-control-btn">
+                <i class="fa-solid fa-pause"></i>
+            </button>
+        </div>
+
+        <!-- Gen Z Slang / Sticker Floating Dock -->
+        <div class="sticker-dock animate-slide-up">
+            <div class="sticker hover-shake" data-slang="Mãi mận mãi keo! 💖">🥑 mận keo</div>
+            <div class="sticker hover-shake" data-slang="Flexing tuổi 17! 💪">😎 flex</div>
+            <div class="sticker hover-shake" data-slang="Hét ét ô ét! 🚨">🆘 sos</div>
+            <div class="sticker hover-shake" data-slang="Cột sống ổn áp! 🦴">🏋️ cột sống</div>
+            <div class="sticker hover-shake" data-slang="Đẹp trai hết nước chấm! 🌟">🔥 hot</div>
+        </div>
+
+        <!-- Floating Slang Response Container -->
+        <div id="slang-toast" class="toast hidden"></div>
+    </div>
+
+    <!-- Hidden YouTube Player Container (YouTube API requires this element) -->
+    <div id="youtube-player" style="position: absolute; top: -9999px; left: -9999px;"></div>
+
+    <!-- Script Imports -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+</html>

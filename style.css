@@ -1,0 +1,730 @@
+/* Custom properties for Neon & Gen Z Aesthetics */
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f0c1b 0%, #201335 50%, #0b071e 100%);
+    --neon-pink: #ff2a5f;
+    --neon-blue: #05d9e8;
+    --neon-purple: #9d4edd;
+    --neon-yellow: #f5b041;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glow-pink: 0 0 15px rgba(255, 42, 95, 0.6);
+    --glow-blue: 0 0 15px rgba(5, 217, 232, 0.6);
+    --text-color: #f8f9fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
+    background-size: 400% 400%;
+    animation: gradientBg 15s ease infinite;
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Firework Canvas covers entire screen */
+#fireworks-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Global Typography Helpers */
+.font-pacifico {
+    font-family: 'Pacifico', cursive;
+}
+.font-outfit {
+    font-family: 'Outfit', sans-serif;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Glassmorphism utility class */
+.glassmorphic {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 20px;
+}
+
+/* Welcome Gate Screen */
+.gate-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    padding: 20px;
+    background: radial-gradient(circle, #1a0f30 0%, #090514 100%);
+}
+
+.gate-card {
+    max-width: 480px;
+    width: 100%;
+    padding: 40px 30px;
+    text-align: center;
+    transform: translateY(0);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gate-avatar {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--glow-pink);
+}
+
+.emoji-avatar {
+    font-size: 3rem;
+    animation: bounce 2s infinite;
+}
+
+.glow-text {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 42, 95, 0.8), 0 0 20px rgba(157, 78, 221, 0.6);
+}
+
+.gate-subtitle {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-bottom: 15px;
+}
+
+.gate-slang {
+    font-size: 0.9rem;
+    color: var(--neon-blue);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.neon-btn {
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: var(--glow-pink);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.neon-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 42, 95, 0.9), 0 0 35px rgba(157, 78, 221, 0.8);
+}
+
+/* Main Container Layout */
+.main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 140px; /* space for music widget and stickers */
+    z-index: 2;
+    position: relative;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.glow-pill {
+    background: rgba(5, 217, 232, 0.1);
+    border: 1px solid var(--neon-blue);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--neon-blue);
+    display: inline-block;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(5, 217, 232, 0.2);
+}
+
+.main-title {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    animation: titleGlow 4s infinite alternate;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #94a3b8;
+}
+
+/* Grid Layout */
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+    .main-title {
+        font-size: 2.8rem;
+    }
+}
+
+.card-panel {
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(157, 78, 221, 0.2);
+}
+
+.panel-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.panel-title i {
+    color: var(--neon-blue);
+}
+
+.panel-desc {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+/* Virtual Cake & Candles Styling */
+.cake-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0 20px;
+}
+
+.cake {
+    position: relative;
+    width: 200px;
+    height: 150px;
+}
+
+.cake-layer {
+    position: absolute;
+    border-radius: 10px 10px 0 0;
+    box-shadow: inset 0 6px 0 rgba(255, 255, 255, 0.2);
+}
+
+.cake-bottom {
+    width: 200px;
+    height: 50px;
+    bottom: 0;
+    background: linear-gradient(to right, #4a2c2c, #704242);
+    border-bottom: 6px solid #e74c3c; /* Cream dripping effect */
+}
+
+.cake-middle {
+    width: 160px;
+    height: 45px;
+    bottom: 44px;
+    left: 20px;
+    background: linear-gradient(to right, #a569bd, #d2b4de);
+    border-bottom: 5px solid #fff;
+}
+
+.cake-top {
+    width: 120px;
+    height: 40px;
+    bottom: 84px;
+    left: 40px;
+    background: linear-gradient(to right, var(--neon-pink), #ff7597);
+    border-bottom: 4px solid #f9e79f;
+}
+
+.cake-plate {
+    position: absolute;
+    width: 240px;
+    height: 12px;
+    background: #bdc3c7;
+    border-radius: 10px;
+    bottom: -12px;
+    left: -20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Candles wrapper and placement */
+.candles-wrapper {
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    bottom: 120px;
+    left: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.candle {
+    position: relative;
+    width: 12px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.candle:hover {
+    transform: scaleY(1.1);
+}
+
+.candle-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--neon-blue), #85e3ff);
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.candle:nth-child(even) .candle-body {
+    background: linear-gradient(to right, var(--neon-yellow), #ffeaa7);
+}
+
+.flame {
+    position: absolute;
+    width: 14px;
+    height: 20px;
+    background: radial-gradient(circle at bottom, #fff 20%, #f39c12 50%, #e74c3c 100%);
+    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+    top: -24px;
+    left: -1px;
+    box-shadow: 0 0 10px #f39c12, 0 0 20px #e74c3c;
+    animation: flicker 0.8s ease infinite alternate;
+    transform-origin: bottom center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Blown out candle state */
+.candle.blown-out .flame {
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.cake-action-text {
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--neon-yellow);
+    margin-top: 15px;
+    height: 24px;
+}
+
+/* Wishes Carousel CSS */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    overflow: hidden;
+}
+
+.carousel-track {
+    position: relative;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(50px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+.wish-card {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+.wish-emoji {
+    font-size: 2.8rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.wish-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #e2e8f0;
+    font-style: italic;
+}
+
+.wish-author {
+    font-size: 0.85rem;
+    color: var(--neon-blue);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.nav-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    background: var(--neon-pink);
+    border-color: var(--neon-pink);
+    transform: scale(1.1);
+    box-shadow: var(--glow-pink);
+}
+
+/* Music Widget (Floating Control Panel) */
+.music-widget {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    max-width: 320px;
+}
+
+.vinyl-disc {
+    width: 50px;
+    height: 50px;
+    background: #000;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: spin 3s linear infinite;
+}
+
+.vinyl-disc.paused {
+    animation-play-state: paused;
+}
+
+.vinyl-center {
+    width: 18px;
+    height: 18px;
+    background: #111;
+    border: 3px solid #ff2a5f;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+}
+
+.vinyl-cover {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0.65;
+}
+
+.music-info {
+    flex-grow: 1;
+}
+
+.track-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+}
+
+.track-artist {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.music-control-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.music-control-btn:hover {
+    background: var(--neon-blue);
+    border-color: var(--neon-blue);
+    transform: scale(1.1);
+    box-shadow: var(--glow-blue);
+}
+
+/* Sticker Dock (Floating Stickers) */
+.sticker-dock {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.sticker {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.sticker:hover {
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    border-color: transparent;
+    transform: translateY(-5px) scale(1.05);
+    color: #fff;
+    box-shadow: var(--glow-blue);
+}
+
+/* Floating Toast Slang notifications */
+.toast {
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    padding: 12px 24px;
+    background: rgba(5, 217, 232, 0.95);
+    color: #0b071e;
+    font-weight: 800;
+    font-size: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(5, 217, 232, 0.4);
+    z-index: 15;
+    animation: popToast 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Floating Emojis styling */
+.floating-emoji {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 0;
+    font-size: 2rem;
+    animation: floatUp 6s linear forwards;
+    opacity: 0.8;
+}
+
+/* General CSS Animations */
+@keyframes gradientBg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes flicker {
+    0% { transform: scale(1) rotate(-1deg); opacity: 0.9; }
+    50% { transform: scale(1.1) rotate(1deg); opacity: 1; }
+    100% { transform: scale(0.95) rotate(-2deg); opacity: 0.8; }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes popToast {
+    0% { transform: translateY(20px) scale(0.8); opacity: 0; }
+    10% { transform: translateY(0) scale(1); opacity: 1; }
+    80% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-20px) scale(0.9); opacity: 0; }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        left: var(--start-x);
+        opacity: 0;
+    }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% {
+        transform: translateY(-110vh) rotate(var(--rot-deg));
+        left: var(--end-x);
+        opacity: 0;
+    }
+}
+
+/* CSS transition helpers */
+.hidden {
+    display: none !important;
+}
+
+/* Micro animations for layouts */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.animate-slide-down {
+    animation: slideDown 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+.animate-slide-left {
+    animation: slideLeft 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+.animate-slide-right {
+    animation: slideRight 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover Shake micro-animation for stickers */
+.hover-shake:hover {
+    animation: shake 0.5s ease infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(-2px, 1px) rotate(-1deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    60% { transform: translate(-1px, 2px) rotate(0deg); }
+    80% { transform: translate(2px, 1px) rotate(1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Media Query tweaks for mobile music control */
+@media (max-width: 600px) {
+    .music-widget {
+        bottom: 90px;
+        left: 20px;
+        right: 20px;
+        max-width: none;
+        width: calc(100% - 40px);
+    }
+    
+    .sticker-dock {
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        justify-content: space-around;
+    }
+    
+    .toast {
+        bottom: 160px;
+        right: 20px;
+        left: 20px;
+        text-align: center;
+    }
+}

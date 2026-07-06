@@ -1,28 +1,35 @@
-// YouTube Player API Integration
+// Dynamically Load the YouTube Iframe Player API to prevent race conditions (especially on file://)
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 let player;
 let isPlaying = false;
 
-function onYouTubeIframeAPIReady() {
+// Global callback called by the YouTube API once it's loaded
+window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player('youtube-player', {
-        height: '0',
-        width: '0',
+        height: '100%',
+        width: '100%',
         videoId: 'WjV56-hJ-Rk',
+        host: 'https://www.youtube.com', // Explicitly force HTTPS to make it work on file:// protocol
         playerVars: {
             'autoplay': 0,
-            'controls': 0,
-            'disablekb': 1,
-            'fs': 0,
+            'controls': 1,      // Show controls inside the TV screen so users can also interact directly
+            'disablekb': 0,
+            'fs': 1,
             'rel': 0,
             'modestbranding': 1,
             'loop': 1,
-            'playlist': 'WjV56-hJ-Rk'
+            'playlist': 'WjV56-hJ-Rk' // Required for loop to work
         },
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
         }
     });
-}
+};
 
 function onPlayerReady(event) {
     console.log("YouTube Player is ready");
@@ -31,15 +38,20 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
     const vinyl = document.getElementById('vinyl-disc');
     const playBtn = document.getElementById('play-pause-btn');
+    const tvStatus = document.querySelector('.tv-status');
     
     if (event.data == YT.PlayerState.PLAYING) {
         isPlaying = true;
         vinyl.classList.remove('paused');
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        tvStatus.innerHTML = '<i class="fa-solid fa-compact-disc fa-spin"></i> Đang hát mừng sinh nhật... 🎵';
+        tvStatus.style.color = '#ff2a5f';
     } else {
         isPlaying = false;
         vinyl.classList.add('paused');
         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        tvStatus.innerHTML = '<i class="fa-solid fa-tv"></i> Đang dừng nhạc 📺';
+        tvStatus.style.color = '#05d9e8';
     }
 }
 

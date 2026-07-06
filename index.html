@@ -132,6 +132,16 @@
                         <button class="nav-btn next-btn" id="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
                     </div>
                 </div>
+
+                <!-- Retro TV Music Video Player -->
+                <div class="retro-tv">
+                    <div class="tv-screen">
+                        <div id="youtube-player"></div>
+                    </div>
+                    <div class="tv-controls">
+                        <span class="tv-status font-outfit"><i class="fa-solid fa-tv"></i> Music Video Quốc Dân 📺</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -163,11 +173,7 @@
         <div id="slang-toast" class="toast hidden"></div>
     </div>
 
-    <!-- Hidden YouTube Player Container (YouTube API requires this element) -->
-    <div id="youtube-player" style="position: absolute; top: -9999px; left: -9999px;"></div>
-
-    <!-- Script Imports -->
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- Script Imports (Loaded dynamically in script.js to prevent race condition) -->
     <script src="script.js"></script>
 </body>
 </html>

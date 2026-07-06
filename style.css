@@ -704,6 +704,50 @@ body {
     100% { transform: translate(0, 0) rotate(0deg); }
 }
 
+/* Retro TV Music Video Player Styling */
+.retro-tv {
+    margin-top: 25px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1.5px solid var(--neon-purple);
+    box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+}
+
+.tv-screen {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tv-screen iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.tv-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 5px 2px;
+}
+
+.tv-status {
+    font-size: 0.8rem;
+    color: var(--neon-blue);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-shadow: 0 0 5px rgba(5, 217, 232, 0.3);
+}
+
 /* Media Query tweaks for mobile music control */
 @media (max-width: 600px) {
     .music-widget {
